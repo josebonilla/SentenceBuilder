@@ -15,8 +15,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="Profile"
-        android:onClick="openProfile" />
+        android:background="@color/orange"
+        android:onClick="openProfile"
+        android:text="Profile" />
 
     <Button
         android:id="@+id/button2"
@@ -26,8 +27,9 @@
         android:layout_alignBaseline="@+id/button1"
         android:layout_alignBottom="@+id/button1"
         android:layout_alignParentRight="true"
-        android:text="Settings"
-        android:onClick="openSettings" />
+        android:background="@color/purple"
+        android:onClick="openSettings"
+        android:text="Settings" />
 
     <Button
         android:id="@+id/button3"
@@ -37,8 +39,9 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/button1"
         android:layout_marginTop="101dp"
-        android:text="Sentence Builder" 
-        android:onClick="openTool"/>
+        android:background="@color/blue"
+        android:onClick="openTool"
+        android:text="Sentence Builder" />
 
     <Button
         android:id="@+id/button4"
@@ -48,7 +51,8 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/button3"
         android:layout_marginTop="56dp"
-        android:text="Game_Name_Placeholder"
-        android:onClick="openGame" />
+        android:background="@color/blue"
+        android:onClick="openGame"
+        android:text="Game_Name_Placeholder" />
 
 </RelativeLayout>

@@ -22,8 +22,21 @@ public class WordTile {
 		String translation = "";
 		String command = "";
 		if (MainActivity.language.equals("Japanese")) {
-			command +="Select "+ MainActivity.language + " from " + word.designator + " where English is '" + word.word + "'";
-		}
+				switch (this.word) {
+				case "dog": return "inu"; 
+				case "cat": return "neko"; 
+				case "boy": return "otokonoko"; 
+				case "girl": return "onnanoko";
+				case "man": return "otokonohito"; 
+				case "pokes": return "tsukimasu";
+				case "punches": return "nagurimasu";
+				case "eats": return "tabemasu";
+				case "jumps": return "tobimasu";
+				case "helps": return "tasukemasu";
+
+				default: return this.word;
+				}
+			}
 		else if (MainActivity.language.equals("Spanish")) {
 			
 		}

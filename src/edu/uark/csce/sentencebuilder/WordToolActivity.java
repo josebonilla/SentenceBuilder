@@ -15,7 +15,7 @@ public class WordToolActivity extends ActionBarActivity {
 	Noun subject;
 	Verb action;
 	Noun directObject;
-	String sentence;
+	String sentence, sentenceTranslate;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -29,7 +29,7 @@ public class WordToolActivity extends ActionBarActivity {
 
 		//Verb Spinner
 		Spinner verbDropDown = (Spinner)findViewById(R.id.verbSpinner);
-		String[] verbs = new String[]{"runs", "punches", "eats", "jumps", "flicks"};
+		String[] verbs = new String[]{"pokes", "punches", "eats", "jumps", "helps"};
 		ArrayAdapter<String> verbAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, verbs);
 		verbDropDown.setAdapter(verbAdapter);
 
@@ -64,6 +64,7 @@ public class WordToolActivity extends ActionBarActivity {
 		Spinner verbDropDown = (Spinner)findViewById(R.id.verbSpinner);
 		Spinner DODropDown = (Spinner)findViewById(R.id.DOSpinner);
 		subject = new Noun(nounDropDown.getSelectedItem().toString(), "noun", "the", false);
+
 		action = new Verb(verbDropDown.getSelectedItem().toString(), "verb");
 		directObject = new Noun(DODropDown.getSelectedItem().toString(), "noun", "the", false);
 		action.addDirectObject(directObject);
@@ -71,9 +72,12 @@ public class WordToolActivity extends ActionBarActivity {
 		updateTextField();
 	}
 	public void updateTextField() {
-		sentence = (subject.display().substring(0, 1).toUpperCase() + subject.display().substring(1) + ".");
+		sentence = (subject.display().substring(0, 1).toUpperCase() + subject.display().substring(1));
+		sentence = sentence.substring(0, sentence.length()-1) + ".";
 		Log.d(null, sentence);
 		TextView result = (TextView)findViewById(R.id.textView1);
-		result.setText(subject.display());
+		result.setText(sentence);
+
 	}
+
 }

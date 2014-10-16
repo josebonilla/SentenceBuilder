@@ -45,7 +45,20 @@ public class Noun extends WordTile{
 		return sentence;
 		
 	}
-	
+	public String displayTranslation() {
+		String sentence = this.demonstrativeArticle + " ";
+		//for (ObjectType objectName : collectionName.getObjects())
+		for (int it = 0; it < adjectives.size(); it++) {
+			sentence += adjectives.get(it).word + " ";
+		}
+		sentence += super.word + " ";
+		for (int it = 0; it < verbs.size(); it++) {
+			sentence += verbs.get(it).display();
+		}
+		
+		return sentence;
+		
+	}
 
 	
 }
