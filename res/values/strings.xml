@@ -8,5 +8,42 @@
     <string name="title_activity_word_tool">WordToolActivity</string>
     <string name="title_activity_profile">Profile</string>
     <string name="title_activity_help">Help</string>
+    
+    <string-array name="language_list">
+        <item>Japanese</item>
+        <item>Russian</item>
+        <item>Spanish</item>
+    </string-array>
 
+    <string-array name="noun_list">
+        <item>I</item>
+        <item>dog</item>
+        <item>cat</item>
+    </string-array>
+    
+    <string-array name="adjective_list">
+        <item>small</item>
+        <item>big</item>
+        <item>happy</item>
+    </string-array>
+    
+    <string-array name="adverb_list">
+        <item>quickly</item>
+        <item>happily</item>
+        <item>angrily</item>
+    </string-array>
+        
+     <string-array name="trans_verb_list">
+        <item>run</item>
+        <item>cry</item>
+        <item>sit</item>
+        <item>sleep</item>
+    </string-array>
+    
+     <string-array name="nontrans_verb_list">
+        <item>buy</item>
+        <item>eat</item>
+        <item>have</item>
+    </string-array>     
+    
 </resources>

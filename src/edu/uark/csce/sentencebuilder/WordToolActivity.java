@@ -2,6 +2,9 @@ package edu.uark.csce.sentencebuilder;
 
 import edu.uark.csce.sentencebuilder.R;
 import android.support.v7.app.ActionBarActivity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -12,33 +15,54 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class WordToolActivity extends ActionBarActivity {
-	Noun subject;
-	Verb action;
-	Noun directObject;
-	String sentence, sentenceTranslate;
+	Sentence sentence;
+	Fragment builderfragment;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_word_tool);
-		//Noun Spinner
-		Spinner nounDropDown = (Spinner)findViewById(R.id.nounSpinner);
-		String[] nouns = new String[]{"dog", "cat", "boy", "girl", "man"};
-		ArrayAdapter<String> nounAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, nouns);
-		nounDropDown.setAdapter(nounAdapter);
+		
 
-		//Verb Spinner
-		Spinner verbDropDown = (Spinner)findViewById(R.id.verbSpinner);
-		String[] verbs = new String[]{"pokes", "punches", "eats", "jumps", "helps"};
-		ArrayAdapter<String> verbAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, verbs);
-		verbDropDown.setAdapter(verbAdapter);
+		builderfragment = new SelectLanguageFragment();
+		setFragment(builderfragment);
 
-		//DO Spinner
-		Spinner DODropDown = (Spinner)findViewById(R.id.DOSpinner);
-		ArrayAdapter<String> DOAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, nouns);
-		DODropDown.setAdapter(DOAdapter);
+
+	}
+	public void next(View v){
+		int id = v.getId();
+		
+		if(id == R.id.next1)replaceFragment(new SelectSubjectFragment());
+		else if(id == R.id.next2){
+			SelectVerbFragment f = new SelectVerbFragment();
+			f.id = R.array.trans_verb_list;
+			replaceFragment(f);
+		}
+		else if(id == R.id.next3){
+			SelectVerbFragment f = new SelectVerbFragment();
+			f.id = R.array.nontrans_verb_list;
+			replaceFragment(f);
+		}
+	}
+	public void setFragment(Fragment f){
+		FragmentManager fm = getFragmentManager();
+		FragmentTransaction ft = fm.beginTransaction();		
+		ft.replace(R.id.fragment_container, f);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.addToBackStack("LIST");
+        
+        ft.commit();
 	}
 
+	public void replaceFragment(Fragment f){
+		FragmentManager fm = getFragmentManager();
+		FragmentTransaction ft = fm.beginTransaction();		
+		ft.replace(R.id.fragment_container, f);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.addToBackStack("LIST");
+        ft.commit();
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -59,25 +83,6 @@ public class WordToolActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	public void onNounOk(View view) {
-		Spinner nounDropDown = (Spinner)findViewById(R.id.nounSpinner);
-		Spinner verbDropDown = (Spinner)findViewById(R.id.verbSpinner);
-		Spinner DODropDown = (Spinner)findViewById(R.id.DOSpinner);
-		subject = new Noun(nounDropDown.getSelectedItem().toString(), "noun", "the", false);
 
-		action = new Verb(verbDropDown.getSelectedItem().toString(), "verb");
-		directObject = new Noun(DODropDown.getSelectedItem().toString(), "noun", "the", false);
-		action.addDirectObject(directObject);
-		subject.addVerb(action);
-		updateTextField();
-	}
-	public void updateTextField() {
-		sentence = (subject.display().substring(0, 1).toUpperCase() + subject.display().substring(1));
-		sentence = sentence.substring(0, sentence.length()-1) + ".";
-		Log.d(null, sentence);
-		TextView result = (TextView)findViewById(R.id.textView1);
-		result.setText(sentence);
-
-	}
 
 }

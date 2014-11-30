@@ -15,9 +15,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="@color/orange"
+        android:background="@drawable/roundbutton_orange"
         android:onClick="openProfile"
-        android:text="Profile" />
+        android:text="Profile"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/button2"
@@ -27,32 +28,37 @@
         android:layout_alignBaseline="@+id/button1"
         android:layout_alignBottom="@+id/button1"
         android:layout_alignParentRight="true"
-        android:background="@color/purple"
+        android:background="@drawable/roundbutton_purple"
         android:onClick="openSettings"
-        android:text="Settings" />
+        android:text="Settings"
+        android:textColor="#FFFFFF" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/button1"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/button1"
-        android:layout_marginTop="101dp"
-        android:background="@color/blue"
-        android:onClick="openTool"
-        android:text="Sentence Builder" />
+        android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/button3"
-        android:layout_marginTop="56dp"
-        android:background="@color/blue"
-        android:onClick="openGame"
-        android:text="Game_Name_Placeholder" />
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/roundbutton_blue"
+            android:onClick="openTool"
+            android:text="Sentence Builder"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/roundbutton_blue"
+            android:onClick="openGame"
+            android:text="Game"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
 
 </RelativeLayout>

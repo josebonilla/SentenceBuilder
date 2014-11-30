@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import edu.uark.csce.sentencebuilder.Noun;
 import edu.uark.csce.sentencebuilder.Verb;
-import edu.uark.csce.sentencebuilder.WordTile;
+import edu.uark.csce.sentencebuilder.Word;
 import edu.uark.csce.sentencebuilder.R;
 
 //import com.memetix.mst.language.Language;
@@ -18,8 +18,6 @@ import edu.uark.csce.sentencebuilder.R;
 
 
 public class MainActivity extends ActionBarActivity {
-	public String completeVoiceInput;
-	public static String language = "Japanese";
 	
 
 	
@@ -27,22 +25,7 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		Noun subject = new Noun("dog", "noun", "the", false);
-		subject.addAdjective(new WordTile("silly", "adjective"));
-		subject.addAdjective(new WordTile("fun", "adjective"));
-		subject.addAdjective(new WordTile("stupid", "adjective"));
-		subject.addAdjective(new WordTile("ridiculous", "adjective"));
-		Verb verb = new Verb("scratches", "verb");
-		verb.addAdverb(new WordTile("quickly", "adverb"));
-		Noun directObject = new Noun("boy", "noun", "a", false);
-		directObject.addAdjective(new WordTile("stupid", "adjective"));
-		verb.addDirectObject(directObject);
-		subject.addVerb(verb);
-		String sentence = (subject.display().substring(0, 1).toUpperCase() + subject.display().substring(1) + ".");
-		Log.d(null, sentence);
-		//IDs to sight onto the Windows Azure account to use the translation.
-	   // Translate.setClientId();
-	    //Translate.setClientSecret(/* Enter your Windows Azure Client Secret here */);
+
 	}
 
 	@Override
