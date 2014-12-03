@@ -25,7 +25,7 @@ public class WordToolActivity extends ActionBarActivity {
 		
 
 		builderfragment = new SelectLanguageFragment();
-		setFragment(builderfragment);
+		replaceFragment(builderfragment);
 
 
 	}
@@ -43,15 +43,6 @@ public class WordToolActivity extends ActionBarActivity {
 			f.id = R.array.nontrans_verb_list;
 			replaceFragment(f);
 		}
-	}
-	public void setFragment(Fragment f){
-		FragmentManager fm = getFragmentManager();
-		FragmentTransaction ft = fm.beginTransaction();		
-		ft.replace(R.id.fragment_container, f);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.addToBackStack("LIST");
-        
-        ft.commit();
 	}
 
 	public void replaceFragment(Fragment f){
